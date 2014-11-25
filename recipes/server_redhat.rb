@@ -77,7 +77,7 @@ if platform_family?("fedora") and node['platform_version'].to_i >= 16
     not_if { ::FileTest.exist?(File.join(dir, "PG_VERSION")) }
   end
 
-else if platform_family?('rhel') and node['platform_version'].to_i >=7
+elsif platform_family?('rhel') and node['platform_version'].to_i >=7
 
   cmd = if node['postgresql']['enable_pgdg_yum']
     version = node['postgresql']['version']
@@ -91,7 +91,7 @@ else if platform_family?('rhel') and node['platform_version'].to_i >=7
     not_if { ::FileTest.exist?(File.join(dir, "PG_VERSION")) }
   end
 
-else if !platform_family?('suse')
+elsif !platform_family?('suse')
   execute "/sbin/service #{svc_name} initdb #{initdb_locale}" do
     not_if { ::FileTest.exist?(File.join(dir, "PG_VERSION")) }
   end
